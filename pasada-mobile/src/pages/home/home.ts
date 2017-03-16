@@ -1,7 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 
 import { NavController, Slides } from 'ionic-angular';
-import { SpeedPage } from '../speed/speed';
+import {LoginPage} from '../login/login';
+
+import { AuthService} from '../../providers/auth-service'
 
 @Component({
 	selector: 'page-home',
@@ -11,7 +13,7 @@ import { SpeedPage } from '../speed/speed';
 export class HomePage {
  	@ViewChild(Slides) slides: Slides;
 
-	constructor(public navCtrl: NavController) {
+	constructor(public navCtrl: NavController, private auth: AuthService) {
 
 	}
 
@@ -21,5 +23,8 @@ export class HomePage {
 
 	logout(){
 		console.log("Logout!")
+		this.auth.logout().subscribe(succ => {
+        	this.navCtrl.setRoot(LoginPage)
+    	});
 	}
 }
