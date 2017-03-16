@@ -12,11 +12,19 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'emergency.html'
 })
 export class EmergencyPage {
+	emergency: Emergency;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+	constructor(public navCtrl: NavController, public navParams: NavParams) {
+		this.emergency = new Emergency;
+	}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad EmergencyPage');
-  }
+	ionViewDidLoad() {
+		console.log('ionViewDidLoad EmergencyPage');
+	}
 
+}
+
+export class Emergency{
+	emergencyType: string = 'crash';
+	remarks: string;
 }

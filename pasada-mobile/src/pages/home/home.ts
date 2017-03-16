@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 
 import { NavController, Slides } from 'ionic-angular';
 import {LoginPage} from '../login/login';
+import {EmergencyPage} from '../emergency/emergency';
 
 import { AuthService} from '../../providers/auth-service'
 
@@ -10,9 +11,9 @@ import { AuthService} from '../../providers/auth-service'
 	templateUrl: 'home.html'
 })
 
+
 export class HomePage {
  	@ViewChild(Slides) slides: Slides;
-
 	constructor(public navCtrl: NavController, private auth: AuthService) {
 
 	}
@@ -26,5 +27,9 @@ export class HomePage {
 		this.auth.logout().subscribe(succ => {
         	this.navCtrl.setRoot(LoginPage)
     	});
+	}
+
+	clickEmergency(){
+		this.navCtrl.push(EmergencyPage);
 	}
 }
