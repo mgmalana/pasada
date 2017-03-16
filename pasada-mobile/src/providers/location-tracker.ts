@@ -2,6 +2,9 @@ import { Injectable, NgZone } from '@angular/core';
 import { Geolocation, Geoposition, BackgroundGeolocation } from 'ionic-native';
 import {Subject} from 'rxjs/Subject';
 import {Observable} from 'rxjs/Observable';
+import { Http, Response } from '@angular/http';
+import 'rxjs/add/observable/interval';
+import 'rxjs/add/operator/mergeMap';
 
 @Injectable()
 export class LocationTracker {
@@ -10,14 +13,13 @@ export class LocationTracker {
 	public locData: LocationData;
 	private eventStream: Subject<LocationData>;
 
-	constructor(public zone: NgZone) {
+	constructor(public zone: NgZone, private http: Http) {
 		this.locData = new LocationData();
 		this.eventStream = new Subject();
 	}
 
 	startTracking() {
-	  	this.updateLocationData({lon: 0,lat: 0,speed: 0}); //initialize values
-
+	  	this.updateLocationData({longitude: 121.0205595,latitude: 14.4144727,speed: 0}); //initialize values
 	  	// Background Tracking
 	    let config = {
 	      desiredAccuracy: 10,
@@ -71,13 +73,16 @@ export class LocationTracker {
 	}
 
 	updateLocationData(location){
-		let tempSpeed = location.speed;
-		if(tempSpeed != undefined){
-			this.locData.speed = tempSpeed;
+		if(location.speed){
+			this.locData.speed = location.speed;
+		}
+		if(location.latitude){
+			this.locData.lat = location.latitude;
+		}
+		if(location.longitude){
+			this.locData.lon = location.longitude;
 		}
 
-		this.locData.lat = location.latitude;
-		this.locData.lon = location.longitude;
 		this.eventStream.next(this.locData);
 	}
 
@@ -85,6 +90,18 @@ export class LocationTracker {
 		return this.eventStream.asObservable();
 	}
 	
+	getSpeedLimit(){
+		console.log('https://www.overpass-api.de/api/interpreter?data=[out:json];way[%22maxspeed:hgv%22]('+
+       		this.locData.lat+','+this.locData.lon+','+this.locData.lat+','+this.locData.lon+');out%20meta;');
+
+       return Observable.interval(10000).flatMap(() => this.http.get('https://www.overpass-api.de/api/interpreter?data=[out:json];way[%22maxspeed:hgv%22]('+
+       		(this.locData.lat - 0.0000001) +','+(this.locData.lon - 0.0000001)+','+this.locData.lat+','+this.locData.lon+');out%20meta;')
+        .map((res:Response) => res.json()));
+
+       // return Observable.interval(10000).flatMap(() => this.http.get('https://www.overpass-api.de/api/interpreter?data=[out:json];way[%22maxspeed:hgv%22](14.4144727,121.0205595,14.4144728,121.0205595);out%20meta;')
+       //  .map((res:Response) => res.json()));
+  	}
+
 }
 
 export class LocationData{

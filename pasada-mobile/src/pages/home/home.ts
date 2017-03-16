@@ -18,17 +18,27 @@ export class HomePage {
 	lat: number;
 	lon: number;
 	speed: number;
-
+	speedLimit: number;
  	@ViewChild(Slides) slides: Slides;
 	constructor(public navCtrl: NavController, private auth: AuthService, private loc: LocationTracker) {
+		this.speedLimit = 40;
+
 		loc.getLocation().subscribe(locData =>{
 			console.log(locData);
 			this.lat = locData.lat;
 			this.lon = locData.lon;
 			this.speed = locData.speed;
 		});
-
 		loc.startTracking();
+
+		loc.getSpeedLimit().subscribe(data =>{
+			if(data != undefined && data.elements.length > 0){
+				let temp = data.elements[0].tags['maxspeed:hgv'];
+				if(temp){ //if not undefined
+					this.speedLimit = temp;
+				}
+			}
+		});
 	}
 
 	clickDiv() {
