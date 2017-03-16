@@ -3,6 +3,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
+import { EmergencyPage } from '../pages/emergency/emergency'
 
 import {AuthService} from '../providers/auth-service';
 
@@ -11,6 +12,7 @@ import {AuthService} from '../providers/auth-service';
     MyApp,
     HomePage,
     LoginPage,
+    EmergencyPage,
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -20,6 +22,7 @@ import {AuthService} from '../providers/auth-service';
     MyApp,
     HomePage,
     LoginPage,
+    EmergencyPage,
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, AuthService]
 })
