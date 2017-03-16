@@ -74,7 +74,7 @@ export class LocationTracker {
 
 	updateLocationData(location){
 		if(location.speed){
-			this.locData.speed = location.speed;
+			this.locData.speed = location.speed * 3.6; //because min/sec to km/hr
 		}
 		if(location.latitude){
 			this.locData.lat = location.latitude;
