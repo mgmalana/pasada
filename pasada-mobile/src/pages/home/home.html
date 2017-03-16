@@ -1,0 +1,23 @@
+<ion-content padding>
+	<ion-slides pager="false">
+		<ion-slide>
+			<div class="div-profile" (click)="clickDiv()">
+				<img class="img-profile" src="assets/img/driver.png">
+			  	<h2>Malana, Mary Grace B.</h2>
+				<p>TasTrans | ZZZ 999</p>
+
+				<h1>TAP ANYWHERE TO START</h1>
+			</div>
+
+			<div class="div-logout">
+				<button ion-button clear (click)="logout()">Logout</button>
+			</div>
+		</ion-slide>
+
+		<ion-slide>
+			<h2>35</h2>
+			<p>Speed limit: 40kph</p>
+			<button ion-button color="danger">TAP FOR EMERGENCY</button>
+		</ion-slide>
+	</ion-slides>
+</ion-content>
