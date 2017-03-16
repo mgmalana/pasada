@@ -5,6 +5,7 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { EmergencyPage } from '../pages/emergency/emergency';
 import {AuthService} from '../providers/auth-service';
+import {LocationTracker} from '../providers/location-tracker';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,6 @@ import {AuthService} from '../providers/auth-service';
     LoginPage,
     EmergencyPage,
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, AuthService]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, AuthService, LocationTracker]
 })
 export class AppModule {}
