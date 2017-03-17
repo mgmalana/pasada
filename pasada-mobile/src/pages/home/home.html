@@ -9,35 +9,16 @@
 </ion-header>
 <ion-content class="background" padding>
 	<ion-slides>
-		<ion-slide> 
-			<!-- <ion-card>
-				<ion-card-header>
-					<h3 class="roboto-900">
-						TasTrans | ZZZ 999
-					</h3>
-				</ion-card-header>
-				<ion-row>
-					<ion-col col-5></ion-col>
-					<ion-col center col-4>
-						<img text-center class="img-profile circle" src="assets/img/driver.png">
-					</ion-col>
-					<ion-col center col-12>
-						<h2 class="roboto-900">
-							Malana, Mary Grace B.	
-						</h2>
-					</ion-col>
-				</ion-row>
-			</ion-card> -->
-
+		<ion-slide (click)="clickDiv()"> 
 			<div class="container enclosing">
 				<ion-card>	
-					<div class="div-profile" (click)="clickDiv()">
+					<div class="div-profile">
 						<img class="img-profile" src="assets/img/driver.png">
 					  	<h2>Miko Santos</h2>
 						<p>TasTrans | ZZZ 999</p>
 
-						<h5>TAP ANYWHERE TO START</h5>
 					</div>
+						<h5>TAP ANYWHERE TO START</h5>
 
 					<div class="div-logout">
 						<button ion-button clear (click)="logout()">Logout</button>

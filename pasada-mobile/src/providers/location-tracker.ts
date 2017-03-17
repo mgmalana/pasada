@@ -19,7 +19,7 @@ export class LocationTracker {
 	}
 
 	startTracking() {
-	  	this.updateLocationData({longitude: 121.0205595,latitude: 14.4144727,speed: 0}); //initialize values
+	  	this.updateLocationData({longitude: 121.0205595,latitude: 14.4144727,speed: 8.3333}); //initialize values
 	  	// Background Tracking
 	    let config = {
 	      desiredAccuracy: 10,
@@ -73,8 +73,10 @@ export class LocationTracker {
 	}
 
 	updateLocationData(location){
+		console.log(location);
+
 		if(location.speed){
-			this.locData.speed = location.speed * 3.6; //because min/sec to km/hr
+			this.locData.speed = Math.round(location.speed * 3.6); //because min/sec to km/hr
 		}
 		if(location.latitude){
 			this.locData.lat = location.latitude;
@@ -82,6 +84,7 @@ export class LocationTracker {
 		if(location.longitude){
 			this.locData.lon = location.longitude;
 		}
+
 
 		this.eventStream.next(this.locData);
 	}
