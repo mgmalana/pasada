@@ -1,12 +1,36 @@
-<ion-content class="login-content" padding>
-	<ion-row class="logo-row">
+<ion-header>
+	<ion-navbar>
+		<ion-title text-center>
+			<h3 class="roboto-900">
+				pasada
+			</h3> 
+		</ion-title>
+	</ion-navbar>
+</ion-header> 
+<ion-content class="login-content background" padding>
+	<!-- <ion-row class="logo-row">
 		<ion-col></ion-col>
 		<ion-col width-67>
 			<img src="http://placehold.it/300x200"/>
 		</ion-col>
 		<ion-col></ion-col>
-	</ion-row>
+	</ion-row> -->
 	<div class="login-box">
+		<ion-grid>
+			<ion-row>
+				<ion-col col-12>
+					<div text-center class="roboto-900 text-capitalize">
+						<h1 class="roboto-900">
+							<br> <br>
+							Welcome to Pasada driver app.
+						 </h1>
+						 <p>
+						 	Please log-in using a registered account.
+						 </p>
+					</div>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
 		<form (ngSubmit)="login()" #registerForm="ngForm">
 			<ion-row>
 				<ion-col>
@@ -25,8 +49,9 @@
 			</ion-row>
 
 			<ion-row>
-				<ion-col class="signup-col">
-					<button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Login</button>
+				<ion-col col-1></ion-col>
+				<ion-col col-10 class="signup-col">
+					<button ion-button style="background: black; color: white;" class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Login</button>
 				</ion-col>
 			</ion-row>
 		  

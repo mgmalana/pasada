@@ -1,17 +1,50 @@
-<ion-content padding>
+<ion-header>
+	<ion-navbar>
+		<ion-title text-center>
+			<h3 class="roboto-900">
+				pasada
+			</h3>
+		</ion-title> 
+	</ion-navbar>
+</ion-header>
+<ion-content class="background" padding>
 	<ion-slides>
-		<ion-slide>
-			<div class="div-profile" (click)="clickDiv()">
-				<img class="img-profile" src="assets/img/driver.png">
-			  	<h2>Malana, Mary Grace B.</h2>
-				<p>TasTrans | ZZZ 999</p>
+		<ion-slide> 
+			<!-- <ion-card>
+				<ion-card-header>
+					<h3 class="roboto-900">
+						TasTrans | ZZZ 999
+					</h3>
+				</ion-card-header>
+				<ion-row>
+					<ion-col col-5></ion-col>
+					<ion-col center col-4>
+						<img text-center class="img-profile circle" src="assets/img/driver.png">
+					</ion-col>
+					<ion-col center col-12>
+						<h2 class="roboto-900">
+							Malana, Mary Grace B.	
+						</h2>
+					</ion-col>
+				</ion-row>
+			</ion-card> -->
 
-				<h1>TAP ANYWHERE TO START</h1>
-			</div>
+			<div class="container enclosing">
+				<ion-card>	
+					<div class="div-profile" (click)="clickDiv()">
+						<img class="img-profile" src="assets/img/driver.png">
+					  	<h2>Miko Santos</h2>
+						<p>TasTrans | ZZZ 999</p>
 
-			<div class="div-logout">
-				<button ion-button clear (click)="logout()">Logout</button>
+						<h5>TAP ANYWHERE TO START</h5>
+					</div>
+
+					<div class="div-logout">
+						<button ion-button clear (click)="logout()">Logout</button>
+					</div>
+				</ion-card>	
 			</div>
+			
 		</ion-slide>
 
 		<ion-slide>

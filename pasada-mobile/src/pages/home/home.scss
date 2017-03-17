@@ -1,8 +1,25 @@
+
+ion-content {
+	background: pink;
+}
+
 page-home {
+	
+	ion-slides {
+
+	}
+
+	.enclosing {
+		height: 100%;
+		width: 100%;
+	}
+
 	.img-profile{
 		border-radius:50%;
-		width: 150px;
-		height: 150px;
+		width: 100px;
+		height: 100px;
+		margin: auto;
+		padding: 10px 10px 10px 10px;
 	}
 	.div-profile{
 		text-align: center;
@@ -10,5 +27,9 @@ page-home {
 
 	.div-logout{
 		text-align: center;
+	}
+
+	padding-3p {
+		padding: 10px 10px 10px 10px;
 	}
 }

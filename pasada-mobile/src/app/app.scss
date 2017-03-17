@@ -14,3 +14,70 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+h1 {
+  font-size: 4em;
+  line-height: 0.9em;
+}
+
+h3 {
+  font-size: 1.2em;
+}
+
+.roboto-200 {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 200;
+}
+
+.roboto-300 {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+}
+
+.roboto-400 {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+}
+
+.roboto-500 {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 500;
+}
+
+.roboto-700 {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 700 !important;
+}
+
+.roboto-800 {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 800;
+}
+
+.roboto-900 {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 900;
+}
+
+.text-bold {
+	font-weight: 700;
+}
+
+.background {
+	background: #ffc107 !important;
+  background-color: #ffc107 !important;
+}
+
+.no-padding {
+  padding: 0px 0px 0px 0px;
+}
+
+.no-border {
+  border: 0;
+}
+
+.circle {
+  border-radius: 100000px;
+  height: 60px !important;
+  width: 60px !important;
+}
