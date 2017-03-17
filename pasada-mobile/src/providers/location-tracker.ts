@@ -91,15 +91,22 @@ export class LocationTracker {
 	}
 	
 	getSpeedLimit(){
-		console.log('https://www.overpass-api.de/api/interpreter?data=[out:json];way[%22maxspeed:hgv%22]('+
-       		this.locData.lat+','+this.locData.lon+','+this.locData.lat+','+this.locData.lon+');out%20meta;');
-
        return Observable.interval(10000).flatMap(() => this.http.get('https://www.overpass-api.de/api/interpreter?data=[out:json];way[%22maxspeed:hgv%22]('+
        		(this.locData.lat - 0.0000001) +','+(this.locData.lon - 0.0000001)+','+this.locData.lat+','+this.locData.lon+');out%20meta;')
         .map((res:Response) => res.json()));
 
        // return Observable.interval(10000).flatMap(() => this.http.get('https://www.overpass-api.de/api/interpreter?data=[out:json];way[%22maxspeed:hgv%22](14.4144727,121.0205595,14.4144728,121.0205595);out%20meta;')
        //  .map((res:Response) => res.json()));
+  	}
+
+  	getPhoneNumberOfPolice(): Observable<Response>{
+  		return this.http.get("https://www.overpass-api.de/api/interpreter?data=[out:json];node['amenity'='police'](around:10000,"+
+  			this.locData.lat+","+this.locData.lon+");out%20meta;");
+  	}
+
+  	getReadableLocation(): Observable<Response>{
+  		return this.http.get("http://nominatim.openstreetmap.org/reverse?format=json&lat="+
+  			this.locData.lat+"&lon="+this.locData.lon+"&zoom=18&addressdetails=0");
   	}
 
 }

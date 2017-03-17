@@ -4,11 +4,14 @@ import 'rxjs/add/operator/map';
  
 export class User {
   name: string;
-  email: string;
+  plateNumber: string;
+  company: string;
+
  
-  constructor(name: string, email: string) {
+  constructor(name: string, plateNumber: string, company: string) {
     this.name = name;
-    this.email = email;
+    this.plateNumber = plateNumber;
+    this.company = company;
   }
 }
  
@@ -23,7 +26,7 @@ export class AuthService {
 		return Observable.create(observer => {
 			// At this point make a request to your backend to make a real check!
 			let access = (credentials.password === "pass" && credentials.email === "email");
-			this.currentUser = new User('Simon', 'saimon@devdactic.com');
+			this.currentUser = new User('Dino Salvacion', 'ZZZ 999', 'TasTrans');
 			observer.next(access);
 			observer.complete();
 		});
@@ -33,6 +36,10 @@ export class AuthService {
  
 	public getUserInfo() : User {
 		return this.currentUser;
+	}
+
+	public getUserStringInfo(): String{
+		return this.currentUser.name + ", " + this.currentUser.plateNumber +", "+ this.currentUser.company;
 	}
  
 	public logout() {
